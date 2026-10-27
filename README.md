@@ -22,6 +22,7 @@ Bulk RNA-seq averages expression over all cells in a tumour. Can single-cell dat
 | 3 | `annotator.py` | Scores each cluster against marker panels for 7 cell types (T, B, NK, macrophage, CAF, endothelial, malignant) and assigns the top-scoring label; scores malignant cells for a 6-gene resistance signature (AXL, NGFR, EGFR, WNT5A, SERPINE1, ROR2) |
 | 4 | `validate.py` | Compares automated labels with the published labels (accuracy, confusion matrix) |
 | 5 | `final_figures.py` | Confusion-matrix heatmap, resistance-score histogram, cell-type composition bar chart |
+| 6 | evaluate_more.py | Per-class precision/recall and resistance score by patient |
 
 ## Results
 
@@ -44,10 +45,17 @@ Bulk RNA-seq averages expression over all cells in a tumour. Can single-cell dat
 
 ### Cell type composition
 ![Cell type composition](fig5_composition.png)
+### Per-class performance
+Overall accuracy is 93%, but macro F1 is 0.83. CAF is the weakest class (precision 0.23, recall 0.73), mostly because 135 malignant cells were labelled CAF. NK cell precision is 0.63. T cell, B cell and malignant classes all reach F1 of 0.94–0.97.
+
+### Resistance score by patient
+Resistance-signature scores differ between patients: patient identity explains about 18% of the variance in malignant cells. Of the 119 cells in the top 10% of scores, 103 (87%) come from a single patient (tumour 79), which contributes about 44% of the malignant cells analysed. The high-score group is therefore mainly patient-specific, not a rare subpopulation shared across patients. Cells within patient 79 still vary widely in score.
+
+![Resistance score by patient](fig6_resistance_by_patient.png)
 
 ## Limitations
 
-- **Resistance "high" group is defined by a percentile cut-off.** Cells in the top 10% of the signature score were flagged as high. That is a fixed fraction by construction, so it does not by itself show that a distinct rare subpopulation exists. Evidence for that would need, for example, a bimodal score distribution, a per-patient breakdown, or an independent threshold.
+- **Resistance "high" group is defined by a percentile cut-off,** so its size is fixed by construction. The per-patient analysis shows it is dominated by one patient. P-values from the Kruskal-Wallis test treat cells as independent, which overstates significance because cells from one patient are correlated.
 - **Patient effects.** Malignant cells in this dataset tend to group by patient. No batch correction was applied, so some clustering structure and signature variation may reflect patient identity rather than resistance biology.
 - **Signature genes come from the literature** and were not validated on this dataset.
 - **Accuracy is dominated by the largest classes.** Per-class precision and recall should be reported alongside overall accuracy.

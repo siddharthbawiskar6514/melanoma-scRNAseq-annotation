@@ -25,11 +25,25 @@ Bulk RNA-seq averages expression over all cells in a tumour. Can single-cell dat
 
 ## Results
 
-- Automated annotation agreed with the published labels for **93.2%** of confidently labelled cells (see `validate.py` output and the confusion matrix).
+- Automated annotation agreed with the published labels for **93.3%** of cells with a known label (n = 4,097; see the confusion matrix).
 - 1,189 cells were annotated as malignant.
-- Resistance-signature scores vary across malignant cells (see `fig4_resistance_distribution.png`).
+- 21 Leiden clusters were found. Malignant cells formed several separate clusters, which fits patient-specific structure.
+- Resistance-signature scores vary across malignant cells, but the signature is not specific to tumour cells: the highest cluster score was in a CAF (fibroblast) cluster.
 
-*(Add your figures here, for example `![UMAP](figures/umap_comparison.png)`.)*
+### Clustering vs published labels
+![UMAP comparison](figures/umap_comparison.png)
+
+### Automated annotation and resistance score
+![Annotation and resistance](figures/annotation_and_resistance.png)
+
+### Annotator accuracy (confusion matrix)
+![Confusion matrix](figures/fig3_confusion_matrix.png)
+
+### Resistance-signature score distribution
+![Resistance score distribution](figures/fig4_resistance_distribution.png)
+
+### Cell type composition
+![Cell type composition](figures/fig5_composition.png)
 
 ## Limitations
 
@@ -38,6 +52,7 @@ Bulk RNA-seq averages expression over all cells in a tumour. Can single-cell dat
 - **Signature genes come from the literature** and were not validated on this dataset.
 - **Accuracy is dominated by the largest classes.** Per-class precision and recall should be reported alongside overall accuracy.
 - Leiden clustering is a classical method; no deep-learning approach was tested.
+- **Malignant cells misclassified as CAF.** In the confusion matrix, 135 ground-truth malignant cells were labelled as CAF, so the annotator is weakest on this class. Overall accuracy is driven by the large T and B cell groups.
 
 ## How to run
 

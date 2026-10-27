@@ -73,6 +73,7 @@ python pipeline.py
 python annotator.py
 python validate.py
 python final_figures.py
+python evaluate_more.py
 ```
 
 ## Note on tooling

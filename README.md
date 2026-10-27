@@ -31,19 +31,19 @@ Bulk RNA-seq averages expression over all cells in a tumour. Can single-cell dat
 - Resistance-signature scores vary across malignant cells, but the signature is not specific to tumour cells: the highest cluster score was in a CAF (fibroblast) cluster.
 
 ### Clustering vs published labels
-![UMAP comparison](figures/umap_comparison.png)
+![UMAP comparison](umap_comparison.png)
 
 ### Automated annotation and resistance score
-![Annotation and resistance](figures/annotation_and_resistance.png)
+![Annotation and resistance](annotation_and_resistance.png)
 
 ### Annotator accuracy (confusion matrix)
-![Confusion matrix](figures/fig3_confusion_matrix.png)
+![Confusion matrix](fig3_confusion_matrix.png)
 
 ### Resistance-signature score distribution
-![Resistance score distribution](figures/fig4_resistance_distribution.png)
+![Resistance score distribution](fig4_resistance_distribution.png)
 
 ### Cell type composition
-![Cell type composition](figures/fig5_composition.png)
+![Cell type composition](fig5_composition.png)
 
 ## Limitations
 

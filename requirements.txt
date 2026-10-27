@@ -1,0 +1,8 @@
+scanpy
+leidenalg
+python-igraph
+anndata
+pandas
+numpy
+matplotlib
+seaborn
